@@ -1,0 +1,17 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "mobile",
+      "shared",
+      "web"
+    ]
+  },
+  "scripts": {
+    "clean": "rm -rf **/node_modules **/yarn.lock **/package-lock.json yarn.lock yarn-error.log",
+    "clean-install": "yarn clean && yarn install"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

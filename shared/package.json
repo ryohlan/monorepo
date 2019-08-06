@@ -1,0 +1,21 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "scripts": {},
+  "dependencies": {
+    "@types/react-native": "^0.60.3",
+    "react": "16.8.6",
+    "react-dom": "^16.8.6",
+    "react-native": "0.60.4",
+    "react-native-web": "^0.11.4"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.57.65",
+    "typescript": "^3.4.5"
+  },
+  "private": true,
+  "workspaces": {
+    "nohoist": []
+  }
+}

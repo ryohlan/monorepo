@@ -1,0 +1,69 @@
+# This references the default nodejs container from
+# the Docker Hub: https://registry.hub.docker.com/_/node/
+# If you want Nodesource's container you would reference nodesource/node
+# Read more about containers on our dev center
+# https://devcenter.wercker.com/overview-and-core-concepts/containers/
+box: node
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# https://devcenter.wercker.com/development/pipelines/
+
+# You can also use services such as databases. Read more on our dev center:
+# https://devcenter.wercker.com/administration/services/
+# services:
+# - postgres
+# https://devcenter.wercker.com/administration/services/examples/postgresql/
+
+# - mongo
+# https://devcenter.wercker.com/administration/services/examples/mongodb/
+build:
+  # The steps that will be executed on build
+  # Steps make up the actions in your pipeline
+  # Read more about steps on our dev center:
+  # https://devcenter.wercker.com/development/steps/
+  steps:
+    - script:
+        name: yarn install
+        code: |
+          yarn
+    - script:
+        name: lint
+        code: |
+          yarn lint
+    - script:
+        name: build of Next.js
+        code: |
+          yarn build:stg
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+
+staging-deploy:
+  steps:
+    - script:
+        name: yarn install
+        code: |
+          yarn
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_STG_APP_NAME
+
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+
+production-deploy:
+  steps:
+    - script:
+        name: yarn install
+        code: |
+          yarn
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME
+
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL

@@ -1,0 +1,4 @@
+typings/*
+*.d.ts
+*.test.*
+__tests__/
