@@ -15,7 +15,9 @@
       "react-native",
       "react-native/!(react)/**",
       "react-native-gesture-handler",
-      "react-native-config"
+      "react-native-config",
+      "react-native/hermesvm",
+      "react-native/jsc-android"
     ]
   },
   "dependencies": {

@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.23",
-    "@types/react-native": "^0.57.65",
+    "@types/react-native": "^0.60.3",
+    "@types/styled-components": "^4.1.18",
     "typescript": "^3.4.5"
   },
   "private": true,
