@@ -13,7 +13,16 @@
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.3",
     "@types/styled-components": "^4.1.18",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "prettier": "^1.18.2"
   },
   "private": true,
   "workspaces": {
