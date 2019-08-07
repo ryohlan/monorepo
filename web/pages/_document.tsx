@@ -7,9 +7,20 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { AppRegistry } from 'react-native-web'
+
+const normalizeNextElements = `
+  #__next {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+`
 
 class MyDocument extends Document {
   public static async getInitialProps(ctx: DocumentContext) {
+    AppRegistry.registerComponent('Main', () => Main)
+    const RNWSheet = AppRegistry.getApplication('Main')
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
@@ -24,7 +35,11 @@ class MyDocument extends Document {
         ...initialProps,
         styles: (
           <>
+            <style
+              dangerouslySetInnerHTML={{ __html: normalizeNextElements }}
+            />
             {initialProps.styles}
+            {RNWSheet.getStyleElement()}
             {sheet.getStyleElement()}
           </>
         )
@@ -36,7 +51,7 @@ class MyDocument extends Document {
 
   public render() {
     return (
-      <Html>
+      <Html style={{ height: '100%' }}>
         <Head>
           <meta name="viewport" content="width=device-width,initial-scale=1" />
           <link
@@ -44,7 +59,7 @@ class MyDocument extends Document {
             href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
           />
         </Head>
-        <body>
+        <body style={{ height: '100%', overflow: 'hidden' }}>
           <Main />
           <NextScript />
         </body>
