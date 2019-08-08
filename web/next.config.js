@@ -9,7 +9,7 @@ const envs = {
 const env = envs[process.env.APP_ENV || 'local']
 
 module.exports = withTM({
-  transpileModules: ['shared'],
+  transpileModules: ['core'],
   env,
   resolve: {
     alias: {

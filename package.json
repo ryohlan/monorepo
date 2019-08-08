@@ -4,7 +4,7 @@
   "workspaces": {
     "packages": [
       "mobile",
-      "shared",
+      "core",
       "web"
     ]
   },
